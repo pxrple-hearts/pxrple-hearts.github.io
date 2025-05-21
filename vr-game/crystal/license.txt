@@ -1,0 +1,8 @@
+Model Information:
+* title:	Cristal (free)
+* source:	https://sketchfab.com/3d-models/cristal-free-0f0cd351eefd475e819ab6d068a36eb9
+* author:	Tryc (https://sketchfab.com/Tryc)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

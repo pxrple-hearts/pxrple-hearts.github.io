@@ -1,0 +1,199 @@
+<style>
+
+@font-face{
+  font-family:'DS-DIGITAL';
+  src: url('DS-DIGITAL.ttf');
+ }
+
+#continue {
+    display: block;
+    position: fixed;
+    margin: auto;
+    top: 20vh;
+    left: 60vh;
+    width: 40vw;
+    height: 50vh;
+  }
+
+  #continue img {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  #lose {
+    display: none;
+    position: fixed;
+    margin: auto;
+    top: 20vh;
+    left: 60vh;
+    width: 40vw;
+    height: 50vh;
+    display: none;
+  }
+
+  #lose img {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  #win {
+    display: none;
+    position: fixed;
+    margin: auto;
+    top: 20vh;
+    left: 60vh;
+    width: 40vw;
+    height: 50vh;
+    display: none;
+  }
+
+  #win img {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  #timer {
+    position: fixed;
+    width: 200px;
+    height: 80px;
+    top: 20px;
+    right: 20px;
+    padding-top: 15px;
+    font-size: 60px;
+    font-family: 'DS-DIGITAL';
+    text-align: center;
+    color: blue;
+    background-color: rgba(255, 255, 255, 0.6);
+    
+  }
+  </style>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras@5.0.0/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-system@3.3.0/dist/aframe-physics-system.min.js"></script>
+    <title>level 2</title>
+  </head>
+  <body>
+
+    <!-- <a-scene>-->
+      <a-scene>
+        
+        <a-sky material="color:#000000"></a-sky>
+        <a-entity light="color:#2eff2e;intensity:0.91;type:point" position="-21.37328 30.25312 -95.85737" rotation="-0.2 -6.12 -2.86"></a-entity>
+        <a-entity light="color:#ff0088;intensity:1.1;type:point" position="22.49828 19.14232 33.53975"></a-entity>
+
+        <!-- AVATAR -->
+        <a-entity id="user" position="0 0 5" movement-controls="speed: 0.5;" kinematic-body="enableJumps: true;" jump-ability="distance: 7;" tracker>
+            <a-entity camera="far: 1000;" wasd-controls="enabled: false;" look-controls="pointerLockEnabled: true;" position="0 5 0"> 
+                <a-cursor fuse="false"></a-cursor>
+            </a-entity>
+        </a-entity>
+
+        <!-- STAGE -->
+        <a-entity id="stage">
+                  <!-- level 1 = 1, 2, 4, 6, 20
+                  level 2 = 5, 7, 10, 11, 12, 18, 19
+                  level 3 = 3, 8, 9, 13, 15, 16, 20, 21
+                  level 4 = 14, 17, 22, 23 -->
+            <a-entity id="l1" position="-37.6533 4.5 -30" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 0.9" static-body></a-entity>
+            <a-entity id="l2" position="-29.63488 4.5 -21.45132" geometry="depth:10;width:10;height:10" material="color:#000000" scale="2.5 0.9 0.9" static-body></a-entity>
+            <a-entity id="l4" position="20.76882 4.5 -13.03832" geometry="depth:10;width:10;height:10" material="color:#000000" scale="2.6 0.9 0.9" static-body></a-entity>
+            <a-entity id="l6" position="12.29959 4.5 -29.82203" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 2.5" static-body></a-entity>
+            
+            <a-entity id="l5" position="-13.07084 9 -38.01906" geometry="depth:10;width:10;height:10" material="color:#000000" scale="2.6 0.9 0.9" static-body></a-entity>
+            <a-entity id="l7" position="20.89842 9 3.8739" geometry="depth:10;width:10;height:10" material="color:#000000" scale="4.3 0.9 0.9" static-body></a-entity>
+            <a-entity id="l10" position="3.93315 9 16.51424" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 1.7" static-body></a-entity>
+            <a-entity id="l11" position="-29.99569 9 -0.49027" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 1.7" static-body></a-entity>
+            <a-entity id="l12" position="-31.97996 9 12.37788" geometry="depth:10;width:10;height:10" material="color:#000000" scale="3.6 0.9 0.9" static-body></a-entity>
+            <a-entity id="l18" position="-13.11916 9 16.64889" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 1.75" static-body></a-entity>
+            <a-entity id="l19" position="45.48539 9 3.84198" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 0.9" static-body></a-entity>
+                        
+            <a-entity id="l3" position="-12.89555 13.5 -4.47342" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 0.9" static-body></a-entity>
+            <a-entity id="l8" position="-4.72501 13.5 -12.70453" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 2.55" static-body></a-entity>
+            <a-entity id="l9" position="29.3932 13.5 29.47842" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 2.6" static-body></a-entity>
+            <a-entity id="l13" position="-30.18057 13.5 33.54877" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 1.7" static-body></a-entity>
+            <a-entity id="l15" position="20.69334 13.5 29.4098" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 0.9" static-body></a-entity>
+            <a-entity id="l16" position="-17.16621 13.5 37.56918" geometry="depth:10;width:10;height:10" material="color:#000000" scale="1.7 0.9 0.9" static-body></a-entity>
+            <a-entity id="l20" position="12.2972 13.5 -45.46697" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 0.9" static-body></a-entity>
+            <a-entity id="l21" position="29.41707 13.5 45.49013" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 0.9" static-body></a-entity>
+
+            <a-entity id="l14" position="4.0807 18 38.36106" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 0.9" static-body></a-entity>
+            <a-entity id="l17" position="33.51573 18 -30.56923" geometry="depth:10;width:10;height:10" material="color:#000000" scale="1.7 0.9 0.9" static-body></a-entity>
+            <a-entity id="l22" position="37.4947 18 -41.40713" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 1.7" static-body></a-entity>
+            <a-entity id="l23" position="45.56166 18 29.72872" geometry="depth:10;width:10;height:10" material="color:#000000" scale="0.9 0.9 0.9" static-body></a-entity>
+
+            <a-entity id="target" gltf-model="crystal/scene.gltf" position="45.56166 28 29.72872" scale="0.7 0.7 0.7"></a-entity>
+
+            <a-entity geometry="primitive:sphere;radius:72.74" material="color:#111111;side:double;src:floor.png" scale="5 5 5"></a-entity>
+
+        </a-entity>
+
+        <!-- FLOOR -->
+        <a-entity id="floor" geometry="width: 100; depth: 100;" material="color:#111111;src:floor.png" position="0 -0.5 0" static-body></a-entity>
+
+    </a-scene>
+
+<div id="continue" onclick="dismissthis()">
+  <img src="msg2.png"/>
+</div>
+
+<div id="timer"></div>
+
+<div id="lose" onclick="document.getElementById('lose').style.display = 'block';">
+  <img src="lose.png"/>
+</div>
+
+<div id="win" onclick="document.getElementById('win').style.display = 'block';">
+  <img src="win.png"/>
+</div>
+
+    <script>
+        const scene = AFRAME.scenes[0] // or use document.querySelector('a-scene')
+        scene.systems.physics.driver.world.gravity.y = -10; // set vertical gravity
+        // console.log(scene.systems.physics.driver.world.gravity)
+
+        var targetEl = document.querySelector('#target');
+        
+        targetEl.addEventListener('click', function() {
+            document.getElementById("win").style.display = "block";
+            startCountdown(-1);
+          // }
+        });
+
+        function dismissthis() {
+          document.getElementById("continue").style.display = "none";
+          startCountdown(30);
+        }
+
+        function startCountdown(seconds) {
+          let counter = seconds;
+
+          const interval = setInterval(() => {
+            // console.log(counter);
+            document.getElementById('timer').innerHTML = counter;
+            counter--;
+
+            if (counter < 0 ) {
+              clearInterval(interval);
+              document.getElementById("lose").style.display = "block";
+              document.getElementById('timer').style.display = 'none';
+            }
+          }, 1000);
+        }
+
+        window.onload = function() {
+          const queryString = window.location.search;
+          const urlParams = new URLSearchParams(queryString);
+          const stat = urlParams.get('stat');
+          if(stat !== '1') {
+            location.replace("index.html")
+          }
+        }
+    </script>
+
+  </body>
+</html>
